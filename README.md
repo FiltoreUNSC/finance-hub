@@ -24,6 +24,7 @@ Your personal Bloomberg terminal — runs locally on your Mac. No subscriptions,
 | **Portfolio** | Track holdings, sector allocation, correlation |
 | **Reports** | Export PDF reports |
 | **Alerts** | Price alerts in sidebar |
+| **Banking** | Plaid bank connect, manual accounts, CSV import |
 
 ## Quick Start
 
@@ -63,6 +64,19 @@ streamlit run app.py
 ```bash
 .venv/bin/python scripts/smoke_test.py
 ```
+
+## Bank Connections (Plaid)
+
+Connect real bank accounts via [Plaid](https://dashboard.plaid.com/signup) (free sandbox for testing):
+
+```bash
+cp .streamlit/secrets.toml.example .streamlit/secrets.toml
+# Add your Plaid client_id and secret, then restart
+```
+
+In the app: **Banking** tab → Connect sandbox test bank, or use Plaid Link for real accounts.
+
+Manual accounts and CSV import work without Plaid.
 
 ## Data & Privacy
 

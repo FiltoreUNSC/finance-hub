@@ -5,7 +5,6 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 
-import feedparser
 import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
@@ -54,7 +53,8 @@ def analyze_text(text: str) -> SentimentResult:
 
 
 def fetch_feed_headlines(url: str, limit: int = 20) -> list[dict]:
-    feed = feedparser.parse(url)
+    from lib.feeds import fetch_feed
+    feed = fetch_feed(url)
     rows = []
     for entry in feed.entries[:limit]:
         title = entry.get("title", "")
@@ -110,7 +110,7 @@ def render_sentiment(watchlist: list[str]) -> None:
                 a["ticker"] = sym
                 articles.append(a)
     else:
-        from lib.macro import NEWS_FEEDS
+        from lib.feeds import NEWS_FEEDS
         source = st.selectbox("Feed", [n for n, _ in NEWS_FEEDS], key="sent_feed")
         limit = st.slider("Articles", 5, 30, 20, key="sent_feed_lim")
         url = dict(NEWS_FEEDS)[source]

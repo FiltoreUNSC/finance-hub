@@ -19,5 +19,5 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Smoke test
-        run: python scripts/smoke_test.py
+      - name: Diagnostics
+        run: python scripts/diagnostics.py

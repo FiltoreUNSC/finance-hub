@@ -75,6 +75,14 @@ def main() -> None:
     assert len(intra) > 10
     ok("intraday data")
 
+    from lib.banking import load_banks, _default_data
+    assert "manual_accounts" in _default_data()
+    ok("banking")
+
+    from lib.links import yahoo_url
+    assert "yahoo.com" in yahoo_url("AAPL")
+    ok("ticker links")
+
     print("\nAll tests passed.")
 
 

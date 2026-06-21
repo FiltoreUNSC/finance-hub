@@ -4,10 +4,10 @@ from __future__ import annotations
 
 from datetime import date
 
-import feedparser
 import pandas as pd
 import streamlit as st
 
+from lib.feeds import NEWS_FEEDS, fetch_feed
 from lib.sentiment import render_sentiment
 
 FOMC_2026 = [
@@ -20,14 +20,6 @@ FOMC_2026 = [
     ("Nov 4–5", date(2026, 11, 4)),
     ("Dec 16–17", date(2026, 12, 16)),
 ]
-
-NEWS_FEEDS = [
-    ("Reuters Business", "https://feeds.reuters.com/reuters/businessNews"),
-    ("CNBC", "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=100003114"),
-    ("MarketWatch", "https://feeds.marketwatch.com/marketwatch/topstories/"),
-    ("Yahoo Finance", "https://finance.yahoo.com/news/rssindex"),
-]
-
 
 def _render_indicators_and_fed() -> None:
     from lib.data import fetch_quote
@@ -74,7 +66,7 @@ def _render_news() -> None:
 
     url = dict(NEWS_FEEDS)[source]
     with st.spinner("Fetching headlines…"):
-        feed = feedparser.parse(url)
+        feed = fetch_feed(url)
 
     if not feed.entries:
         st.warning("Could not load feed. Try another source.")
@@ -88,11 +80,19 @@ def _render_news() -> None:
         if len(summary) > 200:
             summary = summary[:200] + "…"
 
-        st.markdown(f"**[{title}]({link})**")
-        if published:
-            st.caption(published)
-        if summary:
-            st.write(summary)
+        col_t, col_l = st.columns([5, 1])
+        with col_t:
+            if link:
+                st.markdown(f"**[{title}]({link})**")
+            else:
+                st.markdown(f"**{title}**")
+            if published:
+                st.caption(published)
+            if summary:
+                st.write(summary)
+        with col_l:
+            if link:
+                st.link_button("Open →", link, use_container_width=True)
         st.divider()
 
 

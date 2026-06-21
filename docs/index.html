@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Finance Hub — Your Personal Bloomberg Terminal</title>
-  <meta name="description" content="Local finance dashboard — stocks, options, crypto, paper trading, sentiment, PDF reports. No subscription.">
+  <meta name="description" content="Local finance dashboard — stocks, options, crypto, bank connections, paper trading, PDF reports.">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #0a0a0a; color: #e8e8e8; line-height: 1.6; }
@@ -17,8 +17,11 @@
     .price { font-size: 2.5rem; font-weight: 800; color: #7dd3a0; }
     .price-old { font-size: 1.1rem; color: #555; text-decoration: line-through; }
     .price-note { font-size: 0.85rem; color: #666; }
-    .cta { display: inline-block; background: #7dd3a0; color: #0a0a0a; font-weight: 700; font-size: 1rem; padding: 0.9rem 2rem; border-radius: 10px; text-decoration: none; margin-bottom: 0.75rem; }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 0.75rem; }
+    .cta { display: inline-block; background: #7dd3a0; color: #0a0a0a; font-weight: 700; font-size: 1rem; padding: 0.9rem 2rem; border-radius: 10px; text-decoration: none; }
     .cta:hover { opacity: 0.9; }
+    .cta-outline { display: inline-block; border: 1px solid #333; color: #ccc; font-weight: 600; font-size: 0.95rem; padding: 0.85rem 1.5rem; border-radius: 10px; text-decoration: none; }
+    .cta-outline:hover { border-color: #7dd3a0; color: #7dd3a0; }
     .cta-secondary { display: block; font-size: 0.85rem; color: #555; margin-bottom: 3rem; }
     .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 2.5rem; }
     @media (max-width: 500px) { .grid { grid-template-columns: 1fr; } }
@@ -33,23 +36,27 @@
     .install { background: #141414; border: 1px solid #222; border-radius: 10px; padding: 1.25rem; font-family: "SF Mono", Menlo, monospace; font-size: 0.85rem; color: #aaa; margin-bottom: 2.5rem; }
     .install .cmd { color: #7dd3a0; }
     h2.section { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #555; margin-bottom: 1rem; }
-    footer { font-size: 0.8rem; color: #444; text-align: center; margin-top: 3rem; }
+    footer { font-size: 0.85rem; color: #555; text-align: center; margin-top: 3rem; }
+    footer a { color: #7dd3a0; text-decoration: none; margin: 0 0.5rem; }
+    footer a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
   <div class="wrap">
     <div class="badge">v1.0 — No subscription</div>
     <h1>Your personal <span>Bloomberg</span> terminal</h1>
-    <p class="lead">Stocks, options, crypto, paper trading, sentiment analysis, and PDF reports — runs locally on your Mac. One purchase. Yours forever.</p>
+    <p class="lead">Stocks, options, crypto, bank connections, paper trading, sentiment, and PDF reports — runs locally on your machine.</p>
 
     <div class="price-row">
       <span class="price">$29</span>
       <span class="price-old">$49</span>
-      <span class="price-note">launch price · Python source included</span>
+      <span class="price-note">launch price · full source included</span>
     </div>
 
-    <!-- Replace with Gumroad link when live -->
-    <a class="cta" href="mailto:haydenjstump@gmail.com?subject=Finance%20Hub%20—%20Purchase">Get Finance Hub →</a>
+    <div class="cta-row">
+      <a class="cta" href="mailto:haydenjstump@gmail.com?subject=Finance%20Hub%20—%20Purchase">Get Finance Hub →</a>
+      <a class="cta-outline" href="https://github.com/haydenjstump/finance-hub">View on GitHub</a>
+    </div>
     <span class="cta-secondary">Instant download · Mac / Windows / Linux · 2-command install</span>
 
     <h2 class="section">Everything included</h2>
@@ -58,12 +65,12 @@
       <div class="feat"><b>Technicals</b>Daily + intraday charts, RSI, MACD, Bollinger</div>
       <div class="feat"><b>Options</b>P/L calculator, Greeks, IV chain</div>
       <div class="feat"><b>Crypto</b>BTC, ETH, SOL charts + screener</div>
+      <div class="feat"><b>Banking</b>Plaid connect + manual accounts + CSV import</div>
       <div class="feat"><b>Paper Trading</b>$100k virtual portfolio</div>
       <div class="feat"><b>Sentiment</b>Bullish/bearish news scoring</div>
       <div class="feat"><b>Portfolio</b>Holdings, sectors, correlation</div>
       <div class="feat"><b>Reports</b>Export PDF summaries</div>
       <div class="feat"><b>Backtest</b>SMA & RSI strategy testing</div>
-      <div class="feat"><b>Alerts</b>Price notifications</div>
     </div>
 
     <div class="compare">
@@ -76,13 +83,18 @@
 
     <h2 class="section">Install in 30 seconds</h2>
     <div class="install">
-      <div><span class="cmd">./install.sh</span></div>
-      <div><span class="cmd">./run.sh</span></div>
-      <div style="margin-top:0.5rem;color:#555">→ opens at localhost:8501</div>
+      <div><span class="cmd">git clone https://github.com/haydenjstump/finance-hub.git</span></div>
+      <div><span class="cmd">cd finance-hub && ./install.sh && ./run.sh</span></div>
+      <div style="margin-top:0.5rem;color:#555">→ opens at <a href="http://localhost:8501" style="color:#7dd3a0">localhost:8501</a></div>
     </div>
 
-    <p style="font-size:0.85rem;color:#555">Python 3.11+ required. Data via Yahoo Finance. Not financial advice.</p>
-    <footer>Finance Hub v1.0 · haydenjstump@gmail.com</footer>
+    <p style="font-size:0.85rem;color:#555">Python 3.11+ required. Bank connections via <a href="https://dashboard.plaid.com/signup" style="color:#7dd3a0">Plaid</a> (free sandbox). Not financial advice.</p>
+    <footer>
+      Finance Hub v1.0<br>
+      <a href="https://github.com/haydenjstump/finance-hub">GitHub</a>
+      <a href="mailto:haydenjstump@gmail.com">Email</a>
+      <a href="https://dashboard.plaid.com/signup">Plaid Setup</a>
+    </footer>
   </div>
 </body>
 </html>

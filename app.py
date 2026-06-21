@@ -1,14 +1,16 @@
 """Finance Hub — research, technicals, options, macro, portfolio."""
 
-__version__ = "1.0.0"
+__version__ = "1.1.0"
 
 import streamlit as st
 
 from lib.alerts import render_alerts_sidebar
+from lib.banking import render_banking
 from lib.backtest import render_backtest
 from lib.compare import render_compare
 from lib.crypto import render_crypto
 from lib.data import DEFAULT_WATCHLIST, fetch_quote
+from lib.links import GITHUB_REPO, SUPPORT_EMAIL, yahoo_url
 from lib.deep_dive import render_deep_dive
 from lib.dividends import render_dividends
 from lib.heatmap import render_sector_heatmap
@@ -57,9 +59,12 @@ with st.sidebar:
             ch = q["change_pct"] or 0
             color = "green" if ch >= 0 else "red"
             sign = "+" if ch >= 0 else ""
+            ch_html = f'<span class="{color}">{sign}{ch:.2f}%</span>'
             st.markdown(
-                f'<div class="watch-ticker"><b>{sym}</b> ${q["price"]:.2f} '
-                f'<span class="{color}">{sign}{ch:.2f}%</span></div>',
+                f'<div class="watch-ticker">'
+                f'<a href="{yahoo_url(sym)}" target="_blank" rel="noopener" '
+                f'style="color:#7dd3a0;text-decoration:none;"><b>{sym}</b></a> '
+                f'${q["price"]:.2f} {ch_html}</div>',
                 unsafe_allow_html=True,
             )
         except Exception:
@@ -69,8 +74,12 @@ with st.sidebar:
     render_alerts_sidebar()
 
     st.divider()
+    st.link_button("GitHub", GITHUB_REPO, use_container_width=True)
+    st.link_button("Support", SUPPORT_EMAIL, use_container_width=True)
+
     st.markdown(
-        f'<p style="font-size:0.75rem;color:#555">v{__version__} · Data: Yahoo Finance<br>Not financial advice</p>',
+        f'<p style="font-size:0.75rem;color:#555;margin-top:0.5rem">'
+        f'v{__version__} · Yahoo Finance · Not financial advice</p>',
         unsafe_allow_html=True,
     )
 
@@ -89,6 +98,7 @@ tabs = st.tabs([
     "Compare",
     "Options",
     "Crypto",
+    "Banking",
     "Paper Trade",
     "Dividends",
     "Backtest",
@@ -111,16 +121,18 @@ with tabs[4]:
 with tabs[5]:
     render_crypto()
 with tabs[6]:
-    render_paper_trading()
+    render_banking()
 with tabs[7]:
-    render_dividends(watchlist)
+    render_paper_trading()
 with tabs[8]:
-    render_backtest(default)
+    render_dividends(watchlist)
 with tabs[9]:
-    render_sector_heatmap()
+    render_backtest(default)
 with tabs[10]:
-    render_macro(watchlist)
+    render_sector_heatmap()
 with tabs[11]:
-    render_portfolio()
+    render_macro(watchlist)
 with tabs[12]:
+    render_portfolio()
+with tabs[13]:
     render_reports(watchlist)

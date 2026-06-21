@@ -5,3 +5,5 @@ numpy>=1.26.0
 plotly>=5.18.0
 feedparser>=6.0.0
 reportlab>=4.0.0
+plaid-python>=24.0.0
+requests>=2.31.0

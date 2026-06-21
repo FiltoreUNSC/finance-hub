@@ -21,8 +21,9 @@ echo "Installing dependencies..."
 .venv/bin/pip install --upgrade pip -q
 .venv/bin/pip install -r requirements.txt -q
 
-echo "Running smoke test..."
-.venv/bin/python scripts/smoke_test.py
+echo "Running diagnostics..."
+.venv/bin/pip install -r requirements.txt -q
+.venv/bin/python scripts/diagnostics.py
 
 echo ""
 echo "=== Install complete ==="
