@@ -83,7 +83,7 @@ with st.sidebar:
     )
 
 st.title("Finance Hub")
-st.caption("Research · Trade · Analyze · Report — all in one dashboard")
+st.caption("Screener · Charts · Paper trading · Backtests")
 
 render_market_overview()
 st.divider()

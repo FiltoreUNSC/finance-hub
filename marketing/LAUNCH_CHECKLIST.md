@@ -11,7 +11,8 @@
 
 ## Phase 2: Screenshots (30 min)
 
-See `SCREENSHOTS.md` — take 5 required shots for README / social posts.
+- [x] Hero, Options Greeks, Backtest → `docs/images/` (in README)
+- [ ] Optional: Paper Trade, Sentiment for social posts
 
 ## Phase 3: GitHub (10 min)
 
@@ -19,7 +20,8 @@ See `SCREENSHOTS.md` — take 5 required shots for README / social posts.
 - [x] Enable **GitHub Pages** → Settings → Pages → Source: `main` branch → `/docs`
 - [x] Landing page live at `https://filtoreunsc.github.io/finance-hub/`
 - [ ] CI badge green (Actions tab)
-- [ ] Push v1.2 cleanup (banking removed, honest docs)
+- [x] Push v1.2 cleanup (banking removed, honest docs)
+- [ ] Push README screenshots polish
 
 ## Phase 4: README polish (5 min)
 

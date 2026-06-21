@@ -2,8 +2,17 @@
 
 Personal finance dashboard I built in Python. Stock screener, charts, paper trading, backtests — runs locally on your machine. Uses Yahoo Finance for market data.
 
+[![CI](https://github.com/FiltoreUNSC/finance-hub/actions/workflows/ci.yml/badge.svg)](https://github.com/FiltoreUNSC/finance-hub/actions/workflows/ci.yml)
 ![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
+
+**[Live demo page](https://filtoreunsc.github.io/finance-hub/)** · **[Source](https://github.com/FiltoreUNSC/finance-hub)**
+
+## Screenshots
+
+| Market tape + screener | Black-Scholes Greeks | Strategy backtest |
+|---|---|---|
+| ![Dashboard](docs/images/hero.png) | ![Options Greeks](docs/images/options-greeks.png) | ![Backtest](docs/images/backtest.png) |
 
 ## Features
 
@@ -43,6 +52,8 @@ Or if you already have the folder:
 
 Opens at **http://localhost:8501**
 
+If port 8501 is already in use, the app is probably already running — open that URL. Otherwise `./run.sh` will tell you how to use port 8502.
+
 ## Requirements
 
 - macOS, Linux, or Windows
@@ -64,6 +75,12 @@ streamlit run app.py
 .venv/bin/python scripts/smoke_test.py
 ```
 
+## Tech Stack
+
+- **Python 3.11+** · **Streamlit** UI · **Plotly** charts
+- **yfinance** for market data · **pandas/numpy** for analysis
+- **Black-Scholes** Greeks in `lib/greeks.py` (from scratch, no QuantLib)
+
 ## Data & Privacy
 
 - Market data fetched from **Yahoo Finance** (free, no API key)
@@ -79,8 +96,8 @@ finance-hub/
 ├── install.sh          # One-command setup
 ├── run.sh              # One-command launch
 ├── lib/                # Feature modules
+├── docs/images/        # README screenshots
 ├── scripts/            # Smoke test + packaging
-├── marketing/          # Landing page copy
 └── .streamlit/         # Dark theme config
 ```
 
@@ -91,7 +108,7 @@ finance-hub/
 | `command not found: python3` | Install Python from python.org |
 | Charts empty | Check internet; try a different ticker |
 | `ModuleNotFoundError` | Run `./install.sh` again |
-| Port 8501 in use | `streamlit run app.py --server.port 8502` |
+| Port 8501 in use | Open http://localhost:8501 (already running) or `streamlit run app.py --server.port 8502` |
 
 ## License
 
