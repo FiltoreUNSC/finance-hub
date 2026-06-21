@@ -81,11 +81,24 @@ def _show_results(df: pd.DataFrame, source_label: str) -> None:
     )
 
 
+def _parse_ticker_list(raw: str) -> list[str]:
+    seen: set[str] = set()
+    out: list[str] = []
+    for part in raw.replace("\n", ",").split(","):
+        sym = part.strip().upper()
+        if sym and sym not in seen:
+            seen.add(sym)
+            out.append(sym)
+    return out
+
+
 def render_research(watchlist: list[str]) -> None:
-    sub1, sub2, sub3 = st.tabs(["Full Screener", "Watchlist Filter", "Earnings"])
+    sub1, sub2, sub3, sub4 = st.tabs([
+        "Full Screener", "Custom Universe", "Watchlist Filter", "Earnings",
+    ])
 
     with sub1:
-        section_header("Stock Screener", "~80 large caps & ETFs · edit universe in lib/data.py")
+        section_header("Stock Screener", "~80 large caps & ETFs")
         filters = _screener_filters("full")
         if st.button("Run screener", type="primary", key="run_screener"):
             with st.spinner("Scanning tickers…"):
@@ -93,6 +106,28 @@ def render_research(watchlist: list[str]) -> None:
             _show_results(df, f"{len(SCREENER_UNIVERSE)} universe")
 
     with sub2:
+        section_header("Custom Universe", "Screen any tickers you type — one per line or comma-separated")
+        custom_raw = st.text_area(
+            "Your tickers",
+            value="SOFI, PLTR, AMD, COIN, HOOD",
+            height=100,
+            key="custom_universe",
+            placeholder="AAPL, TSLA, SOFI…",
+        )
+        extra = _parse_ticker_list(custom_raw)
+        merge = st.checkbox("Include built-in ~80 universe", value=False, key="merge_universe")
+        universe = list(dict.fromkeys((SCREENER_UNIVERSE if merge else []) + extra))
+        st.caption(f"{len(universe)} tickers ready")
+        filters = _screener_filters("custom")
+        if st.button("Run custom screener", type="primary", key="run_custom_screener"):
+            if not universe:
+                st.error("Add at least one ticker.")
+            else:
+                with st.spinner("Scanning…"):
+                    df = screen_stocks(universe, **filters)
+                _show_results(df, f"{len(universe)} custom")
+
+    with sub3:
         st.subheader("Filter your watchlist")
         st.caption("Apply screener filters to tickers you already track")
         filters = _screener_filters("wl")
@@ -101,7 +136,7 @@ def render_research(watchlist: list[str]) -> None:
                 df = screen_stocks(watchlist, **filters)
             _show_results(df, "watchlist")
 
-    with sub3:
+    with sub4:
         st.subheader("Earnings Calendar")
         earnings_rows = []
         for symbol in watchlist:

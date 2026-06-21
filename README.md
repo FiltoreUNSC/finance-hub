@@ -2,6 +2,8 @@
 
 Personal finance dashboard I built in Python. Stock screener, charts, paper trading, backtests — runs locally on your machine. Uses Yahoo Finance for market data.
 
+**Pricing: free.** Open source on GitHub. No subscription, no paywall, no Gumroad.
+
 [![CI](https://github.com/FiltoreUNSC/finance-hub/actions/workflows/ci.yml/badge.svg)](https://github.com/FiltoreUNSC/finance-hub/actions/workflows/ci.yml)
 ![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)

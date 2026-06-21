@@ -12,7 +12,8 @@ WATCHLIST_PRESETS: dict[str, list[str]] = {
 }
 
 TAB_GUIDE: list[tuple[str, str]] = [
-    ("Research", "Screen ~80 large caps or filter your watchlist"),
+    ("Dashboard", "Accounts, movers, news, quick start"),
+    ("Research", "Screen ~80 large caps, custom tickers, or watchlist"),
     ("Deep Dive", "Fundamentals, ratings, holders"),
     ("Technicals", "Charts, RSI, MACD, Bollinger"),
     ("Compare", "Overlay up to 6 tickers"),
@@ -175,6 +176,7 @@ def render_hero(version: str) -> None:
   <div class="chips">
     <span class="fh-chip">v{version}</span>
     <span class="fh-chip">Yahoo Finance</span>
+    <span class="fh-chip">100% free</span>
     <span class="fh-chip">Runs locally</span>
     <span class="fh-chip">Not financial advice</span>
   </div>

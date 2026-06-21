@@ -11,6 +11,7 @@ import streamlit as st
 import yfinance as yf
 
 from lib.greeks import black_scholes
+from lib.settings import risk_free_rate
 from lib.ui import section_header
 
 
@@ -114,7 +115,13 @@ def _render_greeks(default_ticker: str) -> None:
     with c5:
         iv = st.number_input("IV (%)", min_value=1.0, value=30.0, step=1.0, key="gk_iv") / 100
     with c6:
-        rate = st.number_input("Risk-free rate (%)", min_value=0.0, value=4.5, step=0.1, key="gk_rate") / 100
+        rate = st.number_input(
+            "Risk-free rate (%)",
+            min_value=0.0,
+            value=risk_free_rate() * 100,
+            step=0.1,
+            key="gk_rate",
+        ) / 100
     with c7:
         spot = st.number_input("Spot (0=live)", min_value=0.0, value=0.0, key="gk_spot")
 
@@ -177,7 +184,7 @@ def _render_chain_iv(default_ticker: str) -> None:
             iv = row.get("impliedVolatility") or 0.3
             if iv <= 0:
                 iv = 0.3
-            g = black_scholes(spot, row["strike"], t_years, 0.045, iv, opt_type)
+            g = black_scholes(spot, row["strike"], t_years, risk_free_rate(), iv, opt_type)
             deltas.append(round(g.delta, 3))
             gammas.append(round(g.gamma, 4))
             thetas.append(round(g.theta, 2))
