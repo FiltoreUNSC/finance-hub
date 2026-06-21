@@ -6,8 +6,5 @@ __pycache__/
 portfolio.json
 paper_trading.json
 alerts.json
-banks.json
-.streamlit/secrets.toml
 dist/
 *.egg-info/
-.streamlit/secrets.toml

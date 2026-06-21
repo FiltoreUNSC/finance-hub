@@ -22,7 +22,7 @@ cd ~/finance-hub
 
 Creates `github.com/YOUR_USERNAME/finance-hub` and pushes `main`.
 
-## Step 3: Enable GitHub Pages (free sales page)
+## Step 3: Enable GitHub Pages (project landing page)
 
 1. Open your repo on GitHub
 2. **Settings** → **Pages**
@@ -48,12 +48,8 @@ git remote add origin https://github.com/YOUR_USERNAME/finance-hub.git
 git push -u origin main
 ```
 
-## What's on GitHub vs Gumroad
+## What's on GitHub
 
-| GitHub (public) | Gumroad (paid zip) |
-|-----------------|-------------------|
-| Full source code | Same source + install scripts |
-| README + docs | Packaged `finance-hub-v1.0.zip` |
-| Free clone | $29 convenience + support |
-
-MIT license allows public repo while selling the packaged version.
+- Full source code, README, and docs
+- Landing page at `/docs` (GitHub Pages)
+- MIT license — free to clone and modify

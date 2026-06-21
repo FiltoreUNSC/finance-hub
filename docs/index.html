@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Finance Hub — Your Personal Bloomberg Terminal</title>
-  <meta name="description" content="Local finance dashboard — stocks, options, crypto, bank connections, paper trading, PDF reports.">
+  <title>Finance Hub — Personal Finance Dashboard</title>
+  <meta name="description" content="Personal finance dashboard built in Python — stocks, options, crypto, paper trading, backtests. Runs locally.">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #0a0a0a; color: #e8e8e8; line-height: 1.6; }
@@ -13,10 +13,6 @@
     h1 { font-size: 2.4rem; font-weight: 800; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 1rem; }
     h1 span { color: #7dd3a0; }
     .lead { color: #888; font-size: 1.15rem; margin-bottom: 2rem; max-width: 540px; }
-    .price-row { display: flex; align-items: baseline; gap: 0.75rem; margin-bottom: 2rem; }
-    .price { font-size: 2.5rem; font-weight: 800; color: #7dd3a0; }
-    .price-old { font-size: 1.1rem; color: #555; text-decoration: line-through; }
-    .price-note { font-size: 0.85rem; color: #666; }
     .cta-row { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 0.75rem; }
     .cta { display: inline-block; background: #7dd3a0; color: #0a0a0a; font-weight: 700; font-size: 1rem; padding: 0.9rem 2rem; border-radius: 10px; text-decoration: none; }
     .cta:hover { opacity: 0.9; }
@@ -27,12 +23,8 @@
     @media (max-width: 500px) { .grid { grid-template-columns: 1fr; } }
     .feat { background: #141414; border: 1px solid #222; border-radius: 10px; padding: 1rem 1.2rem; font-size: 0.9rem; }
     .feat b { color: #7dd3a0; display: block; margin-bottom: 0.2rem; }
-    .compare { background: #0f1510; border: 1px solid #2a4a35; border-radius: 12px; padding: 1.5rem; margin-bottom: 2.5rem; }
-    .compare h2 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #555; margin-bottom: 1rem; }
-    .row { display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #1a1a1a; font-size: 0.9rem; }
-    .row:last-child { border: none; }
-    .bad { color: #ff6b6b; }
-    .good { color: #7dd3a0; }
+    .about { background: #0f1510; border: 1px solid #2a4a35; border-radius: 12px; padding: 1.5rem; margin-bottom: 2.5rem; font-size: 0.9rem; color: #aaa; }
+    .about b { color: #7dd3a0; }
     .install { background: #141414; border: 1px solid #222; border-radius: 10px; padding: 1.25rem; font-family: "SF Mono", Menlo, monospace; font-size: 0.85rem; color: #aaa; margin-bottom: 2.5rem; }
     .install .cmd { color: #7dd3a0; }
     h2.section { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #555; margin-bottom: 1rem; }
@@ -43,36 +35,26 @@
 </head>
 <body>
   <div class="wrap">
-    <div class="badge">v1.1 — No subscription</div>
-    <h1>Your personal <span>Bloomberg</span> terminal</h1>
-    <p class="lead">Stocks, options, crypto, bank connections, paper trading, sentiment, and PDF reports — runs locally on your machine.</p>
-
-    <div class="price-row">
-      <span class="price">$29</span>
-      <span class="price-old">$49</span>
-      <span class="price-note">launch price · full source included</span>
-    </div>
+    <div class="badge">v1.2 — Open source</div>
+    <h1>Personal <span>finance dashboard</span></h1>
+    <p class="lead">Built in Python with Streamlit. Stock screener, charts, paper trading, backtests, and PDF reports — runs locally on your machine.</p>
 
     <div class="cta-row">
-      <a class="cta" href="https://github.com/FiltoreUNSC/finance-hub" target="_blank" rel="noopener">Get Finance Hub →</a>
+      <a class="cta" href="https://github.com/FiltoreUNSC/finance-hub" target="_blank" rel="noopener">View on GitHub →</a>
       <a class="cta-outline" href="https://github.com/FiltoreUNSC/finance-hub/blob/main/README.md#quick-start" target="_blank" rel="noopener">Install guide</a>
     </div>
-    <span class="cta-secondary">Free on GitHub · clone, run <code style="color:#7dd3a0">./install.sh && ./run.sh</code></span>
+    <span class="cta-secondary">Free · clone, run <code style="color:#7dd3a0">./install.sh && ./run.sh</code></span>
     <p style="font-size:0.8rem;color:#555;margin-top:0.5rem">
-      Direct link: <a href="https://github.com/FiltoreUNSC/finance-hub" target="_blank" rel="noopener" style="color:#7dd3a0">github.com/FiltoreUNSC/finance-hub</a>
-    </p>
-    <p style="font-size:0.85rem;color:#666;margin-top:1rem">
-      Want the packaged zip? <a href="mailto:haydenjstump@gmail.com?subject=Finance%20Hub%20Purchase" style="color:#7dd3a0">Email for $29 download</a>
-      (Gumroad link coming soon)
+      <a href="https://github.com/FiltoreUNSC/finance-hub" target="_blank" rel="noopener" style="color:#7dd3a0">github.com/FiltoreUNSC/finance-hub</a>
     </p>
 
-    <h2 class="section">Everything included</h2>
+    <h2 class="section">What's included</h2>
     <div class="grid">
       <div class="feat"><b>Research</b>12-filter stock screener + earnings calendar</div>
       <div class="feat"><b>Technicals</b>Daily + intraday charts, RSI, MACD, Bollinger</div>
       <div class="feat"><b>Options</b>P/L calculator, Greeks, IV chain</div>
       <div class="feat"><b>Crypto</b>BTC, ETH, SOL charts + screener</div>
-      <div class="feat"><b>Banking</b>Plaid connect + manual accounts + CSV import</div>
+      <div class="feat"><b>Deep Dive</b>Fundamentals, ratings, financials</div>
       <div class="feat"><b>Paper Trading</b>$100k virtual portfolio</div>
       <div class="feat"><b>Sentiment</b>Bullish/bearish news scoring</div>
       <div class="feat"><b>Portfolio</b>Holdings, sectors, correlation</div>
@@ -80,12 +62,9 @@
       <div class="feat"><b>Backtest</b>SMA & RSI strategy testing</div>
     </div>
 
-    <div class="compare">
-      <h2>Why not just use free tools?</h2>
-      <div class="row"><span>Bloomberg Terminal</span><span class="bad">$24,000/yr</span></div>
-      <div class="row"><span>TradingView Pro</span><span class="bad">$360/yr</span></div>
-      <div class="row"><span>6 separate free apps</span><span class="bad">Fragmented</span></div>
-      <div class="row"><span><b>Finance Hub</b></span><span class="good"><b>$29 once</b></span></div>
+    <div class="about">
+      <b>Honest pitch:</b> This is a portfolio project — not a Bloomberg replacement, not financial advice.
+      Market data comes from Yahoo Finance. News from public RSS feeds. Your portfolio and paper trades stay on your machine.
     </div>
 
     <h2 class="section">Install in 30 seconds</h2>
@@ -95,12 +74,11 @@
       <div style="margin-top:0.5rem;color:#555">→ opens at <a href="http://localhost:8501" style="color:#7dd3a0">localhost:8501</a></div>
     </div>
 
-    <p style="font-size:0.85rem;color:#555">Python 3.11+ required. Bank connections via <a href="https://dashboard.plaid.com/signup" style="color:#7dd3a0">Plaid</a> (free sandbox). Not financial advice.</p>
+    <p style="font-size:0.85rem;color:#555">Python 3.11+ required. Not financial advice.</p>
     <footer>
-      Finance Hub v1.1<br>
+      Finance Hub v1.2<br>
       <a href="https://github.com/FiltoreUNSC/finance-hub" target="_blank" rel="noopener">GitHub</a>
       <a href="mailto:haydenjstump@gmail.com">Email</a>
-      <a href="https://dashboard.plaid.com/signup">Plaid Setup</a>
     </footer>
   </div>
 </body>

@@ -4,7 +4,6 @@ from __future__ import annotations
 
 YAHOO_QUOTE = "https://finance.yahoo.com/quote/{ticker}"
 YAHOO_CHART = "https://finance.yahoo.com/chart/{ticker}"
-PLAID_SIGNUP = "https://dashboard.plaid.com/signup"
 GITHUB_REPO = "https://github.com/FiltoreUNSC/finance-hub"
 SUPPORT_EMAIL = "mailto:haydenjstump@gmail.com?subject=Finance%20Hub%20Support"
 

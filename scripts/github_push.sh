@@ -27,7 +27,7 @@ else
     --"$VISIBILITY" \
     --source=. \
     --remote=origin \
-    --description "Personal Bloomberg terminal — stocks, options, crypto, paper trading" \
+    --description "Personal finance dashboard — stocks, options, crypto, paper trading" \
     --push
 fi
 

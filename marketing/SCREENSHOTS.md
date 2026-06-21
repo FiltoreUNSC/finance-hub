@@ -1,4 +1,4 @@
-# Screenshot Checklist for Gumroad / Social
+# Screenshot Checklist for GitHub / Social
 
 Record these from a running Finance Hub (`./run.sh`). Use macOS Cmd+Shift+4 or fullscreen screenshots.
 
@@ -20,14 +20,14 @@ Record these from a running Finance Hub (`./run.sh`). Use macOS Cmd+Shift+4 or f
 
 - Use dark mode (default) — already branded
 - Pick tickers people recognize: AAPL, NVDA, BTC, SPY
-- Crop to 1280×800 or 16:9 for Gumroad cover
+- Crop to 1280×800 or 16:9 for README hero image
 - Add 1 cover image in Canva: dark bg, green accent, "Finance Hub" title
 
 ## Cover image text
 
 ```
 FINANCE HUB
-Personal Bloomberg Terminal
+Personal Finance Dashboard
 Stocks · Options · Crypto
-$29 — No Subscription
+Free on GitHub
 ```

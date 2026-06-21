@@ -1,11 +1,10 @@
 """Finance Hub — research, technicals, options, macro, portfolio."""
 
-__version__ = "1.1.0"
+__version__ = "1.2.0"
 
 import streamlit as st
 
 from lib.alerts import render_alerts_sidebar
-from lib.banking import render_banking
 from lib.backtest import render_backtest
 from lib.compare import render_compare
 from lib.crypto import render_crypto
@@ -42,7 +41,7 @@ st.markdown("""
 
 with st.sidebar:
     st.title("Finance Hub")
-    st.caption(f"v{__version__} · Your personal Bloomberg")
+    st.caption(f"v{__version__} · Personal finance dashboard")
 
     watchlist_text = st.text_area(
         "Watchlist (comma-separated)",
@@ -98,7 +97,6 @@ tabs = st.tabs([
     "Compare",
     "Options",
     "Crypto",
-    "Banking",
     "Paper Trade",
     "Dividends",
     "Backtest",
@@ -121,18 +119,16 @@ with tabs[4]:
 with tabs[5]:
     render_crypto()
 with tabs[6]:
-    render_banking()
-with tabs[7]:
     render_paper_trading()
-with tabs[8]:
+with tabs[7]:
     render_dividends(watchlist)
-with tabs[9]:
+with tabs[8]:
     render_backtest(default)
-with tabs[10]:
+with tabs[9]:
     render_sector_heatmap()
-with tabs[11]:
+with tabs[10]:
     render_macro(watchlist)
-with tabs[12]:
+with tabs[11]:
     render_portfolio()
-with tabs[13]:
+with tabs[12]:
     render_reports(watchlist)

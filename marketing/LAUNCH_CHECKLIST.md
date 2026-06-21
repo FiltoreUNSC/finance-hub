@@ -11,42 +11,33 @@
 
 ## Phase 2: Screenshots (30 min)
 
-See `SCREENSHOTS.md` — take 5 required shots.
+See `SCREENSHOTS.md` — take 5 required shots for README / social posts.
 
-## Phase 3: Gumroad (20 min)
-
-1. Create account at [gumroad.com](https://gumroad.com)
-2. New Product → Digital Product
-3. Upload `dist/finance-hub-v1.0.zip`
-4. Paste copy from `GUMROAD.md`
-5. Set price: **$29**
-6. Add screenshots from Phase 2
-7. Publish → copy product URL
-
-## Phase 4: GitHub (10 min)
+## Phase 3: GitHub (10 min)
 
 - [x] Repo live at `github.com/FiltoreUNSC/finance-hub`
 - [x] Enable **GitHub Pages** → Settings → Pages → Source: `main` branch → `/docs`
-- [x] Sales page live at `https://filtoreunsc.github.io/finance-hub/`
+- [x] Landing page live at `https://filtoreunsc.github.io/finance-hub/`
 - [ ] CI badge green (Actions tab)
+- [ ] Push v1.2 cleanup (banking removed, honest docs)
 
-## Phase 5: Landing page (5 min)
+## Phase 4: README polish (5 min)
 
-1. Update `docs/index.html` — replace mailto with Gumroad URL
-2. `git push` — Pages auto-updates
+- [ ] Add 1–2 screenshots to README
+- [ ] Confirm pitch matches landing page
 
-## Phase 6: Promote
+## Phase 5: Promote (portfolio, not sales)
 
-- [ ] Post on X/LinkedIn with screenshot + Gumroad link
-- [ ] Reddit: r/algotrading, r/stocks, r/Python (follow sub rules)
-- [ ] Tell friends who trade
+- [ ] Add to GitHub profile pinned repos
+- [ ] Post on X/LinkedIn with screenshot + GitHub link
+- [ ] Reddit: r/Python, r/algotrading (follow sub rules — portfolio showcase, not a product pitch)
 
 ## Your files
 
 | File | Purpose |
 |------|---------|
-| `dist/finance-hub-v1.0.zip` | What buyers download |
-| `marketing/GUMROAD.md` | Listing copy |
-| `marketing/index.html` | Sales page |
+| `README.md` | Project documentation |
+| `docs/index.html` | GitHub Pages landing page |
+| `marketing/index.html` | Local copy of landing page |
 | `marketing/SCREENSHOTS.md` | What to photograph |
-| `README.md` | Buyer documentation |
+| `marketing/GUMROAD.md` | Paused — not selling |

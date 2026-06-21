@@ -39,7 +39,7 @@ def check_imports() -> None:
     print("\n[1] Module imports")
     modules = [
         "lib.data", "lib.technicals", "lib.options_calc", "lib.greeks",
-        "lib.banking", "lib.plaid_client", "lib.links", "lib.sentiment",
+        "lib.links", "lib.sentiment",
         "lib.reports", "lib.paper_trading", "lib.portfolio", "lib.alerts",
         "lib.crypto", "lib.backtest", "lib.compare", "lib.deep_dive",
         "lib.dividends", "lib.heatmap", "lib.macro", "lib.market_overview",
@@ -75,7 +75,6 @@ def check_files() -> None:
         "app.py", "install.sh", "run.sh", "requirements.txt", "README.md",
         "LICENSE", "docs/index.html", "marketing/index.html",
         ".github/workflows/ci.yml", ".streamlit/config.toml",
-        ".streamlit/secrets.toml.example",
     ]
     for f in required:
         if (ROOT / f).exists():
@@ -170,31 +169,8 @@ def check_feeds() -> None:
         warn("news feeds", f"only {working}/{len(NEWS_FEEDS)} reachable")
 
 
-def check_banking() -> None:
-    print("\n[7] Banking module")
-    from lib.banking import load_banks, save_banks, _default_data
-    d = _default_data()
-    assert "manual_accounts" in d
-    ok("banking data schema")
-
-    from lib.plaid_client import get_plaid_credentials, plaid_available
-    if plaid_available():
-        ok("Plaid credentials configured")
-        try:
-            from lib.plaid_client import create_sandbox_connection, fetch_accounts
-            conn = create_sandbox_connection()
-            accts = fetch_accounts(conn["access_token"])
-            assert len(accts) > 0
-            ok(f"Plaid sandbox connect ({len(accts)} accounts)")
-        except Exception as e:
-            fail("Plaid sandbox connect", str(e)[:100])
-    else:
-        warn("Plaid keys not set — manual/CSV banking still works")
-        ok("manual + CSV banking available")
-
-
 def check_ticker_links() -> None:
-    print("\n[8] Ticker link helpers")
+    print("\n[7] Ticker link helpers")
     from lib.links import yahoo_url, ticker_link_html
     url = yahoo_url("AAPL")
     assert "finance.yahoo.com" in url
@@ -213,7 +189,6 @@ def main() -> int:
     check_scripts_executable()
     check_smoke()
     check_ticker_links()
-    check_banking()
     check_feeds()
     check_links()
 
