@@ -25,9 +25,9 @@ See `SCREENSHOTS.md` — take 5 required shots.
 
 ## Phase 4: GitHub (10 min)
 
-- [ ] Repo live at `github.com/haydenjstump/finance-hub`
-- [ ] Enable **GitHub Pages** → Settings → Pages → Source: `main` branch → `/docs`
-- [ ] Sales page live at `https://haydenjstump.github.io/finance-hub/`
+- [x] Repo live at `github.com/FiltoreUNSC/finance-hub`
+- [x] Enable **GitHub Pages** → Settings → Pages → Source: `main` branch → `/docs`
+- [x] Sales page live at `https://filtoreunsc.github.io/finance-hub/`
 - [ ] CI badge green (Actions tab)
 
 ## Phase 5: Landing page (5 min)

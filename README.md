@@ -29,7 +29,7 @@ Your personal Bloomberg terminal — runs locally on your Mac. No subscriptions,
 ## Quick Start
 
 ```bash
-git clone https://github.com/haydenjstump/finance-hub.git
+git clone https://github.com/FiltoreUNSC/finance-hub.git
 cd finance-hub
 ./install.sh
 ./run.sh

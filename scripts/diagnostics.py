@@ -135,19 +135,19 @@ def check_links() -> None:
                                   headers={"User-Agent": "FinanceHub-Diagnostics/1.0"})
                 if r.status_code < 400:
                     ok(f"{url[:60]} → {r.status_code}")
-                elif r.status_code == 404 and "github.com/haydenjstump" in url:
+                elif r.status_code == 404 and "github.com/FiltoreUNSC" in url:
                     warn(f"{url[:60]} → 404 (push repo to GitHub)")
                 else:
                     r2 = requests.get(url, timeout=10, allow_redirects=True,
                                        headers={"User-Agent": "FinanceHub-Diagnostics/1.0"}, stream=True)
                     if r2.status_code < 400:
                         ok(f"{url[:60]} → {r2.status_code} (GET)")
-                    elif r2.status_code == 404 and "github.com/haydenjstump" in url:
+                    elif r2.status_code == 404 and "github.com/FiltoreUNSC" in url:
                         warn(f"{url[:60]} → 404 (push repo to GitHub)")
                     else:
                         fail(f"{url[:60]}", f"HTTP {r2.status_code}")
             except Exception as e:
-                if "github.com/haydenjstump" in url:
+                if "github.com/FiltoreUNSC" in url:
                     warn(url[:60], "repo not on GitHub yet")
                 else:
                     fail(url[:60], str(e)[:80])
