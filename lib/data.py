@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import pandas as pd
+import streamlit as st
 import yfinance as yf
 
 DEFAULT_WATCHLIST = ["SPY", "AAPL", "NVDA", "TSLA", "MSFT", "AMZN", "META", "GOOGL"]
@@ -19,6 +20,7 @@ SCREENER_UNIVERSE = [
 ]
 
 
+@st.cache_data(ttl=60, show_spinner=False)
 def fetch_history(ticker: str, period: str = "6mo", interval: str = "1d") -> pd.DataFrame:
     data = yf.download(ticker, period=period, interval=interval, progress=False, auto_adjust=True)
     if isinstance(data.columns, pd.MultiIndex):
@@ -26,6 +28,7 @@ def fetch_history(ticker: str, period: str = "6mo", interval: str = "1d") -> pd.
     return data.dropna()
 
 
+@st.cache_data(ttl=300, show_spinner=False)
 def fetch_info(ticker: str) -> dict:
     try:
         return yf.Ticker(ticker).info or {}
@@ -33,6 +36,7 @@ def fetch_info(ticker: str) -> dict:
         return {}
 
 
+@st.cache_data(ttl=60, show_spinner=False)
 def fetch_quote(ticker: str) -> dict:
     info = fetch_info(ticker)
     hist = fetch_history(ticker, period="5d")

@@ -7,6 +7,7 @@ import streamlit as st
 import yfinance as yf
 
 from lib.data import SCREENER_UNIVERSE, screen_stocks
+from lib.ui import section_header
 
 
 def _screener_filters(key_prefix: str) -> dict:
@@ -84,7 +85,7 @@ def render_research(watchlist: list[str]) -> None:
     sub1, sub2, sub3 = st.tabs(["Full Screener", "Watchlist Filter", "Earnings"])
 
     with sub1:
-        st.subheader("Stock Screener")
+        section_header("Stock Screener", "~80 large caps & ETFs · edit universe in lib/data.py")
         filters = _screener_filters("full")
         if st.button("Run screener", type="primary", key="run_screener"):
             with st.spinner("Scanning tickers…"):

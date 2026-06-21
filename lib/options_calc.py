@@ -11,6 +11,7 @@ import streamlit as st
 import yfinance as yf
 
 from lib.greeks import black_scholes
+from lib.ui import section_header
 
 
 def payoff_at_expiry(
@@ -97,7 +98,7 @@ def _render_payoff(default_ticker: str) -> None:
 
 
 def _render_greeks(default_ticker: str) -> None:
-    st.caption("Black-Scholes model — educational estimates")
+    section_header("Options Greeks", "Black-Scholes from scratch — educational estimates")
 
     c1, c2, c3 = st.columns(3)
     with c1:

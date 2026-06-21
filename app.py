@@ -1,6 +1,6 @@
 """Finance Hub — research, technicals, options, macro, portfolio."""
 
-__version__ = "1.2.0"
+__version__ = "1.3.0"
 
 import streamlit as st
 
@@ -21,6 +21,15 @@ from lib.portfolio import render_portfolio
 from lib.reports import render_reports
 from lib.screener import render_research
 from lib.technicals import render_technicals
+from lib.ui import (
+    WATCHLIST_PRESETS,
+    inject_styles,
+    render_footer,
+    render_hero,
+    render_module_guide,
+    render_sidebar_brand,
+    section_label,
+)
 
 st.set_page_config(
     page_title="Finance Hub",
@@ -29,81 +38,90 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-st.markdown("""
-<style>
-    .watch-ticker { font-size: 0.85rem; padding: 0.35rem 0; border-bottom: 1px solid #222; }
-    .green { color: #7dd3a0; }
-    .red { color: #ff6b6b; }
-    h1 { letter-spacing: -0.03em; }
-    div[data-testid="stMetric"] { background: #141414; padding: 0.65rem; border-radius: 8px; border: 1px solid #222; }
-</style>
-""", unsafe_allow_html=True)
+inject_styles()
 
 with st.sidebar:
-    st.title("Finance Hub")
-    st.caption(f"v{__version__} · Personal finance dashboard")
+    render_sidebar_brand(__version__)
+
+    section_label("Watchlist")
+    if "watchlist_text" not in st.session_state:
+        st.session_state.watchlist_text = ", ".join(DEFAULT_WATCHLIST)
+
+    preset = st.selectbox(
+        "Quick load",
+        ["Custom"] + list(WATCHLIST_PRESETS.keys()),
+        key="wl_preset",
+        label_visibility="collapsed",
+    )
+    last_preset = st.session_state.get("wl_preset_last", "Custom")
+    if preset != "Custom" and preset != last_preset:
+        st.session_state.watchlist_text = ", ".join(WATCHLIST_PRESETS[preset])
+    st.session_state.wl_preset_last = preset
 
     watchlist_text = st.text_area(
-        "Watchlist (comma-separated)",
-        value=", ".join(DEFAULT_WATCHLIST),
-        height=80,
+        "Tickers (comma-separated)",
+        height=72,
+        key="watchlist_text",
+        placeholder="SPY, AAPL, NVDA…",
     )
     watchlist = [t.strip().upper() for t in watchlist_text.split(",") if t.strip()]
 
-    st.divider()
-    st.subheader("Live quotes")
+    st.caption(f"{len(watchlist)} ticker{'s' if len(watchlist) != 1 else ''} · any symbol Yahoo supports")
+
+    section_label("Live quotes")
     for sym in watchlist[:10]:
         try:
             q = fetch_quote(sym)
+            price = q["price"]
             ch = q["change_pct"] or 0
             color = "green" if ch >= 0 else "red"
             sign = "+" if ch >= 0 else ""
-            ch_html = f'<span class="{color}">{sign}{ch:.2f}%</span>'
+            price_str = f"${price:.2f}" if price else "—"
+            ch_html = f'<span class="{color}">{sign}{ch:.2f}%</span>' if price else ""
             st.markdown(
                 f'<div class="watch-ticker">'
                 f'<a href="{yahoo_url(sym)}" target="_blank" rel="noopener" '
                 f'style="color:#7dd3a0;text-decoration:none;"><b>{sym}</b></a> '
-                f'${q["price"]:.2f} {ch_html}</div>',
+                f'{price_str} {ch_html}</div>',
                 unsafe_allow_html=True,
             )
         except Exception:
             st.markdown(f'<div class="watch-ticker"><b>{sym}</b> —</div>', unsafe_allow_html=True)
 
+    if len(watchlist) > 10:
+        st.caption(f"+ {len(watchlist) - 10} more (showing first 10)")
+
     st.divider()
     render_alerts_sidebar()
 
     st.divider()
-    st.link_button("GitHub", GITHUB_REPO, use_container_width=True)
-    st.link_button("Support", SUPPORT_EMAIL, use_container_width=True)
+    col_a, col_b = st.columns(2)
+    with col_a:
+        st.link_button("GitHub", GITHUB_REPO, use_container_width=True)
+    with col_b:
+        st.link_button("Support", SUPPORT_EMAIL, use_container_width=True)
 
-    st.markdown(
-        f'<p style="font-size:0.75rem;color:#555;margin-top:0.5rem">'
-        f'v{__version__} · Yahoo Finance · Not financial advice</p>',
-        unsafe_allow_html=True,
-    )
-
-st.title("Finance Hub")
-st.caption("Screener · Charts · Paper trading · Backtests")
-
+render_hero(__version__)
 render_market_overview()
 st.divider()
+render_module_guide()
 
 default = watchlist[0] if watchlist else "SPY"
 
 tabs = st.tabs([
-    "Research",
-    "Deep Dive",
-    "Technicals",
-    "Compare",
-    "Options",
-    "Crypto",
-    "Paper Trade",
-    "Dividends",
-    "Backtest",
-    "Sectors",
-    "Macro & News",
-    "Portfolio",
-    "Reports",
+    "📊 Research",
+    "🔍 Deep Dive",
+    "📈 Technicals",
+    "⚖️ Compare",
+    "🎯 Options",
+    "₿ Crypto",
+    "📝 Paper Trade",
+    "💰 Dividends",
+    "⏪ Backtest",
+    "🗺️ Sectors",
+    "🌐 Macro",
+    "💼 Portfolio",
+    "📄 Reports",
 ])
 
 with tabs[0]:
@@ -132,3 +150,5 @@ with tabs[11]:
     render_portfolio()
 with tabs[12]:
     render_reports(watchlist)
+
+render_footer(__version__, GITHUB_REPO)

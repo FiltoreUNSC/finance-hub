@@ -8,6 +8,7 @@ import plotly.graph_objects as go
 import streamlit as st
 
 from lib.data import fetch_history
+from lib.ui import section_header
 
 
 def run_sma_crossover(df: pd.DataFrame, fast: int, slow: int) -> pd.DataFrame:
@@ -49,8 +50,7 @@ def run_rsi_reversal(df: pd.DataFrame, period: int = 14, oversold: int = 30, ove
 
 
 def render_backtest(default_ticker: str) -> None:
-    st.subheader("Strategy Backtester")
-    st.caption("Educational only — past performance ≠ future results")
+    section_header("Strategy Backtester", "Educational only — no fees, simplified Sharpe, past ≠ future")
 
     c1, c2, c3 = st.columns(3)
     with c1:
