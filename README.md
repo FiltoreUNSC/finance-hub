@@ -75,6 +75,12 @@ streamlit run app.py
 .venv/bin/python scripts/smoke_test.py
 ```
 
+Full pre-release checks (optional — needs network, skips localhost URLs):
+
+```bash
+.venv/bin/python scripts/diagnostics.py
+```
+
 ## Tech Stack
 
 - **Python 3.11+** · **Streamlit** UI · **Plotly** charts
@@ -112,7 +118,7 @@ finance-hub/
 
 ## License
 
-MIT — use personally or modify freely. Not for redistribution as-is without permission.
+MIT — use, modify, and redistribute freely with attribution. See [LICENSE](LICENSE).
 
 ## Support
 

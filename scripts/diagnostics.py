@@ -129,6 +129,10 @@ def check_links() -> None:
             if "YOUR_USERNAME" in url or "example.com" in url:
                 warn(f"placeholder URL: {url}")
                 continue
+            parsed = urlparse(url)
+            if parsed.hostname in ("localhost", "127.0.0.1"):
+                ok(f"{url[:60]} (local dev URL — skipped)")
+                continue
             try:
                 r = requests.head(url, timeout=10, allow_redirects=True,
                                   headers={"User-Agent": "FinanceHub-Diagnostics/1.0"})
