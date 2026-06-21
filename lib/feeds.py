@@ -5,7 +5,7 @@ from __future__ import annotations
 import feedparser
 import requests
 
-USER_AGENT = "Mozilla/5.0 (compatible; FinanceHub/1.0; +https://github.com/FiltoreUNSC/finance-hub)"
+USER_AGENT = "Mozilla/5.0 (compatible; FinanceHub/1.0; +https://github.com/Haydenjstump/finance-hub)"
 
 NEWS_FEEDS = [
     ("Google News — Markets", "https://news.google.com/rss/search?q=stock+market&hl=en-US&gl=US&ceid=US:en"),

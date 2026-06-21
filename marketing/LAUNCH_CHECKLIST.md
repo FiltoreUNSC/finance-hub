@@ -16,9 +16,9 @@
 
 ## Phase 3: GitHub (10 min)
 
-- [x] Repo live at `github.com/FiltoreUNSC/finance-hub`
+- [x] Repo live at `github.com/Haydenjstump/finance-hub`
 - [x] Enable **GitHub Pages** → Settings → Pages → Source: `main` branch → `/docs`
-- [x] Landing page live at `https://filtoreunsc.github.io/finance-hub/`
+- [x] Landing page live at `https://haydenjstump.github.io/finance-hub/`
 - [ ] CI badge green (Actions tab)
 - [x] Push v1.2 cleanup (banking removed, honest docs)
 - [ ] Push README screenshots polish

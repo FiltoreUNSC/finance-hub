@@ -62,8 +62,8 @@ marketing/             # Gumroad copy, launch checklist
 
 ## GitHub
 
-- Repo: https://github.com/FiltoreUNSC/finance-hub
-- Pages: https://filtoreunsc.github.io/finance-hub/
+- Repo: https://github.com/Haydenjstump/finance-hub
+- Pages: https://haydenjstump.github.io/finance-hub/
 
 ## Review focus areas
 

@@ -4,11 +4,11 @@ Personal finance dashboard I built in Python. Stock screener, charts, paper trad
 
 **Pricing: free.** Open source on GitHub. No subscription, no paywall, no Gumroad.
 
-[![CI](https://github.com/FiltoreUNSC/finance-hub/actions/workflows/ci.yml/badge.svg)](https://github.com/FiltoreUNSC/finance-hub/actions/workflows/ci.yml)
+[![CI](https://github.com/Haydenjstump/finance-hub/actions/workflows/ci.yml/badge.svg)](https://github.com/Haydenjstump/finance-hub/actions/workflows/ci.yml)
 ![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-**[Live demo page](https://filtoreunsc.github.io/finance-hub/)** · **[Source](https://github.com/FiltoreUNSC/finance-hub)**
+**[Live demo page](https://haydenjstump.github.io/finance-hub/)** · **[Source](https://github.com/Haydenjstump/finance-hub)**
 
 ## Screenshots
 
@@ -39,7 +39,7 @@ Personal finance dashboard I built in Python. Stock screener, charts, paper trad
 ## Quick Start
 
 ```bash
-git clone https://github.com/FiltoreUNSC/finance-hub.git
+git clone https://github.com/Haydenjstump/finance-hub.git
 cd finance-hub
 ./install.sh
 ./run.sh
