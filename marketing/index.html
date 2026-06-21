@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Finance Hub — Your Personal Bloomberg Terminal</title>
+  <meta name="description" content="Local finance dashboard — stocks, options, crypto, paper trading, sentiment, PDF reports. No subscription.">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #0a0a0a; color: #e8e8e8; line-height: 1.6; }
+    .wrap { max-width: 720px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+    .badge { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #7dd3a0; border: 1px solid #2a4a35; background: #0f1f14; padding: 0.4rem 0.8rem; border-radius: 999px; margin-bottom: 1.5rem; }
+    h1 { font-size: 2.4rem; font-weight: 800; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 1rem; }
+    h1 span { color: #7dd3a0; }
+    .lead { color: #888; font-size: 1.15rem; margin-bottom: 2rem; max-width: 540px; }
+    .price-row { display: flex; align-items: baseline; gap: 0.75rem; margin-bottom: 2rem; }
+    .price { font-size: 2.5rem; font-weight: 800; color: #7dd3a0; }
+    .price-old { font-size: 1.1rem; color: #555; text-decoration: line-through; }
+    .price-note { font-size: 0.85rem; color: #666; }
+    .cta { display: inline-block; background: #7dd3a0; color: #0a0a0a; font-weight: 700; font-size: 1rem; padding: 0.9rem 2rem; border-radius: 10px; text-decoration: none; margin-bottom: 0.75rem; }
+    .cta:hover { opacity: 0.9; }
+    .cta-secondary { display: block; font-size: 0.85rem; color: #555; margin-bottom: 3rem; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 2.5rem; }
+    @media (max-width: 500px) { .grid { grid-template-columns: 1fr; } }
+    .feat { background: #141414; border: 1px solid #222; border-radius: 10px; padding: 1rem 1.2rem; font-size: 0.9rem; }
+    .feat b { color: #7dd3a0; display: block; margin-bottom: 0.2rem; }
+    .compare { background: #0f1510; border: 1px solid #2a4a35; border-radius: 12px; padding: 1.5rem; margin-bottom: 2.5rem; }
+    .compare h2 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #555; margin-bottom: 1rem; }
+    .row { display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #1a1a1a; font-size: 0.9rem; }
+    .row:last-child { border: none; }
+    .bad { color: #ff6b6b; }
+    .good { color: #7dd3a0; }
+    .install { background: #141414; border: 1px solid #222; border-radius: 10px; padding: 1.25rem; font-family: "SF Mono", Menlo, monospace; font-size: 0.85rem; color: #aaa; margin-bottom: 2.5rem; }
+    .install .cmd { color: #7dd3a0; }
+    h2.section { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #555; margin-bottom: 1rem; }
+    footer { font-size: 0.8rem; color: #444; text-align: center; margin-top: 3rem; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="badge">v1.0 — No subscription</div>
+    <h1>Your personal <span>Bloomberg</span> terminal</h1>
+    <p class="lead">Stocks, options, crypto, paper trading, sentiment analysis, and PDF reports — runs locally on your Mac. One purchase. Yours forever.</p>
+
+    <div class="price-row">
+      <span class="price">$29</span>
+      <span class="price-old">$49</span>
+      <span class="price-note">launch price · Python source included</span>
+    </div>
+
+    <!-- Replace with Gumroad link when live -->
+    <a class="cta" href="mailto:haydenjstump@gmail.com?subject=Finance%20Hub%20—%20Purchase">Get Finance Hub →</a>
+    <span class="cta-secondary">Instant download · Mac / Windows / Linux · 2-command install</span>
+
+    <h2 class="section">Everything included</h2>
+    <div class="grid">
+      <div class="feat"><b>Research</b>12-filter stock screener + earnings calendar</div>
+      <div class="feat"><b>Technicals</b>Daily + intraday charts, RSI, MACD, Bollinger</div>
+      <div class="feat"><b>Options</b>P/L calculator, Greeks, IV chain</div>
+      <div class="feat"><b>Crypto</b>BTC, ETH, SOL charts + screener</div>
+      <div class="feat"><b>Paper Trading</b>$100k virtual portfolio</div>
+      <div class="feat"><b>Sentiment</b>Bullish/bearish news scoring</div>
+      <div class="feat"><b>Portfolio</b>Holdings, sectors, correlation</div>
+      <div class="feat"><b>Reports</b>Export PDF summaries</div>
+      <div class="feat"><b>Backtest</b>SMA & RSI strategy testing</div>
+      <div class="feat"><b>Alerts</b>Price notifications</div>
+    </div>
+
+    <div class="compare">
+      <h2>Why not just use free tools?</h2>
+      <div class="row"><span>Bloomberg Terminal</span><span class="bad">$24,000/yr</span></div>
+      <div class="row"><span>TradingView Pro</span><span class="bad">$360/yr</span></div>
+      <div class="row"><span>6 separate free apps</span><span class="bad">Fragmented</span></div>
+      <div class="row"><span><b>Finance Hub</b></span><span class="good"><b>$29 once</b></span></div>
+    </div>
+
+    <h2 class="section">Install in 30 seconds</h2>
+    <div class="install">
+      <div><span class="cmd">./install.sh</span></div>
+      <div><span class="cmd">./run.sh</span></div>
+      <div style="margin-top:0.5rem;color:#555">→ opens at localhost:8501</div>
+    </div>
+
+    <p style="font-size:0.85rem;color:#555">Python 3.11+ required. Data via Yahoo Finance. Not financial advice.</p>
+    <footer>Finance Hub v1.0 · haydenjstump@gmail.com</footer>
+  </div>
+</body>
+</html>
